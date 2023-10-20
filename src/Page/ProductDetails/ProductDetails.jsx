@@ -12,8 +12,13 @@ import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 
 const ProductDetails = () => {
 
+    
+
     const productDetails = useLoaderData();
 
+  
+
+  
     const handleMyCart = () => {
         fetch("http://localhost:5000/myCart", {
             method: 'POST',

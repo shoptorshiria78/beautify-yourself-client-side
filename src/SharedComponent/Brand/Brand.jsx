@@ -15,7 +15,7 @@ const Brand = () => {
                 setBrands(data);
             })
     }, [])
-    console.log(brands);
+    // console.log(brands);
 
     return (
 

@@ -40,7 +40,7 @@ const SingleCart = ({ cartData,cartDataOrdered,setCartDataOrdered }) => {
           })
 
     }
-
+    console.log("singlecart",cartData)
     return (
         <div className='grid grid-cols-1 lg:grid-cols-2 bg-red-100'>
             <img className='h-[300px] lg:col-span-1 w-full p-5 bg-white' src={cartData.image} alt="" />

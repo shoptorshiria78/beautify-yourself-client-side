@@ -85,12 +85,12 @@ const NavBar = ({toggleDarkMode}) => {
                             <Link onClick={handleLogOut} to='/'
                                 className=" bg-[#E55473] text-white px-3 lg:px-5 py-2 text-sm md:text-base rounded">Sing Out </Link>
                         </div>
-                        : <div >
+                        : <div className="mr-1" >
                             <Link to='/login'
                                 className=" bg-[#E55473] text-white px-5 py-2 rounded text-sm md:text-base">Log In </Link>
                         </div>
                 }
-                <input onClick={toggleDarkMode} type="checkbox" className="toggle toggle-error"  />
+                <input onClick={toggleDarkMode} type="checkbox" className="toggle toggle-error w-10 md:w-12"  />
             </div>
         </div>
     );

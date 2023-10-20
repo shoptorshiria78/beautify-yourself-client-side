@@ -6,6 +6,7 @@ import { updateProfile } from "firebase/auth";
 import NavBar from "../../SharedComponent/NavBar/NavBar";
 import {  BsGoogle } from "react-icons/bs";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 const Registration = () => {
@@ -49,6 +50,31 @@ const Registration = () => {
                     })
 
                 navigate('/login');
+
+                
+                const user = { email, password };
+
+                fetch('http://localhost:5000/user', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.insertedId) {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Your product has been saved',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                        e.target.reset();
+                        })
             })
             .catch(error => {
                 console.error(error)
