@@ -42,14 +42,16 @@ const SingleCart = ({ cartData,cartDataOrdered,setCartDataOrdered }) => {
     }
 
     return (
-        <div className='grid grid-cols-3'>
-            <img className='h-[300px] w-full' src={cartData.image} alt="" />
-            <div className='col-span-2 flex h-full items-center ml-4'>
+        <div className='grid grid-cols-2 bg-red-100'>
+            <img className='h-[300px] col-span-1 w-full p-5 bg-white' src={cartData.image} alt="" />
+            <div className='col-span-1 flex h-full items-center ml-4'>
                 <div >
-                    <h1>{cartData.name}</h1>
-                    <p>{cartData.description}</p>
-                    <p>{cartData.price}</p>
-                    <button onClick={()=>handleDelete(cartData._id)}><AiFillDelete className='text-4xl'></AiFillDelete></button>
+                    <h1 className='text-xl font-bold text-fuchsia-500'>{cartData.name}</h1>
+                    <p className='text-sm 
+                     text-fuchsia-500 my-2'>{cartData.description}</p>
+                    <p className='text-base font-medium 
+                     text-fuchsia-500'>Price :{cartData.price} $</p>
+                    <button className='text-2xl font-bold text-fuchsia-500' onClick={()=>handleDelete(cartData._id)}><AiFillDelete ></AiFillDelete></button>
                 </div>
             </div>
         </div>
