@@ -1,8 +1,8 @@
 
 import { useLoaderData } from "react-router-dom";
 import ShowProducts from "../ShowProducts/ShowProducts";
-import NavBar from "../NavBar/NavBar";
 import Swal from "sweetalert2";
+import Slider from "../Slider/Slider";
 
 
 const Products = () => {
@@ -11,11 +11,12 @@ const Products = () => {
 
     return (
         <div>
-            <NavBar></NavBar>
+            
+            <Slider></Slider>
 
-            <div>
-               
-                <div className=" max-w-[450px] md:max-w-[750px] lg:max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className=" max-w-[450px] md:max-w-[750px] lg:max-w-[1100px] mx-auto bg-white p-8 ">
+            
+                <div className=" mt-[600px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
 
                     {
                         loadedProducts.length > 0 ?
