@@ -67,12 +67,12 @@ const Registration = () => {
     }
 
     return (
-        <div className=" bg-[#e0de4c24] py-5">
+        <div className=" bg-fuchsia-100 py-5">
             
             <NavBar></NavBar>
             <div className="hero min-h-screen mt-10 mb-10 ">
                 <div >
-                    <div className=" w-[400px] bg-gradient-to-r from-red-200 to-lime-100">
+                    <div className=" w-[400px] bg-gradient-to-r from-fuchsia-200 to-violet-100">
                         <form onSubmit={handleRegister} className="card-body ">
                             <div className="form-control">
                                 <label className="label">
@@ -104,14 +104,14 @@ const Registration = () => {
                                     } </span>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="w-full px-4 py-3 rounded-xl text-white bg-violet-400">Register</button>
+                                <button className="w-full px-4 py-3 rounded-xl text-white bg-fuchsia-500">Register</button>
                             </div>
                         </form>
 
-                        <p className=" text-center py-8 mb-8">Already Have an Account ? <Link className="text-violet-600 underline" to='/login'>Login</Link></p>
+                        <p className=" text-center py-8 mb-8">Already Have an Account ? <Link className="text-fuchsia-600 underline" to='/login'>Login</Link></p>
                     </div>
                     <div className="mx-auto my-10 flex flex-col  w-[400px]">
-                        <button onClick={handleGoogleLogIn} className=" flex bg-violet-500 text-white items-center w-full p-2 mt-3 rounded-full border-violet-600 border-2 "><BsGoogle></BsGoogle> <span className="ml-24">Continue with google</span></button>
+                        <button onClick={handleGoogleLogIn} className=" flex bg-fuchsia-500 text-white items-center w-full p-2 mt-3 rounded-full border-fuchsia-600 border-2 "><BsGoogle></BsGoogle> <span className="ml-24">Continue with google</span></button>
                     </div>
                 </div>
             </div>

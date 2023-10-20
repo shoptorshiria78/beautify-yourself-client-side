@@ -87,7 +87,7 @@ const {_id,brand, name, price, type, image, description, rating} = loadedProduct
                     <label className="label">
                         <span className="label-text"></span>
                     </label>   
-                    <input className="p-2 w-full bg-fuchsia-600 text-white" type="submit" value="ADD" />
+                    <input className="p-2 w-full bg-fuchsia-600 text-white" type="submit" value="SUBMIT" />
                 </form>
             </div>
         </div>

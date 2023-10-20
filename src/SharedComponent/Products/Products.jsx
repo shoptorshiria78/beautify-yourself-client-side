@@ -16,7 +16,7 @@ const Products = () => {
 
             <div className=" max-w-[450px] md:max-w-[750px] lg:max-w-[1100px] mx-auto bg-white p-8 ">
             
-                <div className=" mt-[600px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                <div className=" mt-[900px] md:mt-[600px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
 
                     {
                         loadedProducts.length > 0 ?

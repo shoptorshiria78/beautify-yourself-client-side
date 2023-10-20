@@ -42,8 +42,8 @@ const ProductDetails = () => {
     return (
         <div>
             <NavBar></NavBar>
-            <div className=" grid grid-cols-1 md:grid-cols-3 gap-4 max-w-[450px] md:max-w-[750px] lg:max-w-[1100px] mx-auto  ">
-                <div className="my-10 col-span-1 md:col-span-2 bg-fuchsia-100 ">
+            <div className=" grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-[450px] md:max-w-[750px] lg:max-w-[1100px] mx-auto  ">
+                <div className="mt-10 lg:mb-10 col-span-1 lg:col-span-2 bg-fuchsia-100 ">
                     <div className="flex p-4">
                         <img className="w-[300px] h-[60vh] my-4  bg-white" src={productDetails.image} alt="" />
                         <div className="ml-4 flex items-center " >
@@ -58,7 +58,7 @@ const ProductDetails = () => {
                     </div>
                 </div>
                 <div>
-                    <div className=" p-12 rounded w-[400px] md:w-[250px] lg:w-[300px] bg-violet-100 mt-16">
+                    <div className=" p-12 rounded w-[400px] md:w-[500px] lg:w-[300px] bg-violet-100 mt-5 mb-5 mx-auto lg:mt-16">
                         <h1 className="text-3xl py-5">Contact Info</h1>
                         <p className="flex items-center"><span className="mr-4 "><MdLocationOn className="w-5 h-5 text-cyan-500"></MdLocationOn></span>2912 Meadowbrook Road <br /> Los Angles, CA</p>
                         <p className="flex items-center"> <span className="mr-4"><TfiEmail className="w-5 h-5 text-cyan-500"></TfiEmail></span> corporateas@gmail.com</p>

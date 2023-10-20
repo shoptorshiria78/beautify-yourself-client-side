@@ -4,11 +4,11 @@ import { BsPeopleFill } from "react-icons/bs";
 
 const Usebenefits = () => {
     return (
-        <div className="my-6 flex max-w-[450px] md:max-w-[750px] lg:max-w-[1100px] mx-auto">
-            <div className="w-1/2">
+        <div className="my-6 flex flex-col lg:flex-row max-w-[450px] md:max-w-[750px] lg:max-w-[1100px] mx-auto">
+            <div className=" w-11/10 lg:w-1/2">
                 <img src="https://i.ibb.co/LdTc99n/benefit-real-img.jpg" alt="" />
             </div>
-            <div className="w-1/2 ml-8 ">
+            <div className=" w-11/10 lg:w-1/2 ml-8 ">
                 <div className=" flex-col items-center h-full">
                     <h1 className="text-3xl my-4 text-fuchsia-500 font-medium">Why We Are</h1>
                     <div className="flex ">

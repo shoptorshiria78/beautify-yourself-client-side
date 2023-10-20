@@ -40,12 +40,12 @@ const Slider = () => {
                 <img className=' w-full bg-cover h-[600px]' src={bannerData[activeIndexSlide].img} alt="" />
            
             <div className="hero-overlay bg-opacity-80"></div>
-            <div className=" w-full grid grid-cols-2">
-                <div className='mt-40 w-10/12'>
+            <div className=" w-full grid grid-cols-1 md:grid-cols-2">
+                <div className='mt-40 w-10/12 mx-auto'>
                     <h1 className="text-4xl text-center text-fuchsia-200">{bannerData[activeIndexSlide].title}</h1>
                     <p className="text-xl text-center text-fuchsia-200 ">{bannerData[activeIndexSlide].description}</p>
                 </div>
-                <div className='w-10/12 mt-40'>
+                <div className='w-10/12 mt-40 mx-auto'>
                 <Swiper
                
                onSlideChange={(swiper) => handleSwiper(swiper)}

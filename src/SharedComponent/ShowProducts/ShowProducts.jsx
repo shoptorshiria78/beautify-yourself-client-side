@@ -31,8 +31,8 @@ const ShowProducts = ({ loadedProduct }) => {
                     <p className='flex items-center text-fuchsia-600 text-sm'>Rating: {loadedProduct.rating}<BsStar className='ml-2'></BsStar></p>
 
                     <div className=" flex justify-between mt-3  ">
-                        <button onClick={() => handleDetails(loadedProduct._id)} className=" bg-fuchsia-600 text-white w-1/3 my-3 py-1 px-3 rounded ">Details</button>
-                        <button onClick={() => handleUpdate(loadedProduct._id)} className=" bg-fuchsia-600 text-white w-1/3 my-3 py-1 px-3 rounded ">Update</button>
+                        <button onClick={() => handleDetails(loadedProduct._id)} className=" bg-fuchsia-600 text-white w-1/3 my-3 py-1 px-1 text-xs rounded ">Details</button>
+                        <button onClick={() => handleUpdate(loadedProduct._id)} className=" bg-fuchsia-600 text-white w-1/3 my-3 py-1 px-1 text-xs rounded ">Update</button>
                     </div>
                 </div>
             </div>
