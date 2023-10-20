@@ -62,6 +62,8 @@ const Registration = () => {
         googleLogIn()
             .then()
             .catch()
+
+            navigate('/')
     }
 
     return (

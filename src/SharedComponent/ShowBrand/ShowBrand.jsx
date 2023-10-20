@@ -11,12 +11,12 @@ const ShowBrand = ({ brand }) => {
     }
     
     return (
-        <div onClick={()=>handleProduct(brand.brand)} className="card  bg-base-100 shadow-xl">
+        <div onClick={()=>handleProduct(brand.brand)} className="card  bg-gradient-to-r from-violet-200 to-fuchsia-200 shadow-xl">
             <figure className=" pt-2">
                 <img src={brand.img} alt="brands" className="rounded w-11/12 h-[200px]" />
             </figure>
             <div className="card-body items-center text-center">
-                <h2 className="card-title">{brand.brand}</h2>            
+                <h2 className="card-title text-violet-400">{brand.brand}</h2>            
             </div>
         </div>
     );

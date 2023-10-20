@@ -1,6 +1,7 @@
 
+import Banner from "../../SharedComponent/Banner/Banner";
 import Brand from "../../SharedComponent/Brand/Brand";
-import NavBar from "../../SharedComponent/NavBar/NavBar";
+
 
 
 const Home = () => {
@@ -9,7 +10,8 @@ const Home = () => {
 
     return (
         <div>
-            <NavBar></NavBar>
+           
+            <Banner></Banner>
             <Brand></Brand>
         </div>
     );

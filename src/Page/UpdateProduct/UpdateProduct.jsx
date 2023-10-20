@@ -53,7 +53,7 @@ const {_id,brand, name, price, type, image, description, rating} = loadedProduct
         <div className="bg-gradient-to-r from-fuchsia-400 to-fuchsia-100 py-5">
             <NavBar></NavBar>
             <div className=" py-20 " >
-                <h1 className="text-3xl text-center text-white my-3">Add Product</h1>
+                <h1 className="text-3xl text-center text-white my-3">Update Product</h1>
                 <form onSubmit={handleUpdate} className="space-y-2 w-2/6 mt-3 mx-auto mb-4">
                     <label className="label">
                         <span className="label-text text-white">Brand Name</span>

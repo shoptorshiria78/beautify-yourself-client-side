@@ -9,7 +9,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const LogIn = () => {
 
-    const { signIn } = useContext(AuthContext);
+    const { signIn,  googleLogIn } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -33,6 +33,13 @@ const LogIn = () => {
                 e.target.reset()
             })
 
+    }
+    const handleGoogleLogIn = () => {
+
+        googleLogIn()
+            .then()
+            .catch()
+            navigate(location?.state ? location.state :'/');         
     }
 
     return (
@@ -74,7 +81,7 @@ const LogIn = () => {
                     </div>
 
                     <div className="mx-auto my-10 flex flex-col  w-[400px]">
-                        <button className=" flex bg-violet-500 text-white items-center w-full p-2 mt-3 rounded-full border-violet-600 border-2 "><BsGoogle></BsGoogle> <span className="ml-24">Continue with google</span></button>
+                        <button onClick={handleGoogleLogIn} className=" flex bg-violet-500 text-white items-center w-full p-2 mt-3 rounded-full border-violet-600 border-2 "><BsGoogle></BsGoogle> <span className="ml-24">Continue with google</span></button>
                     </div>
                 </div>
             </div>

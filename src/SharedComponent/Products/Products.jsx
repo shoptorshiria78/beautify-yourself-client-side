@@ -12,22 +12,25 @@ const Products = () => {
     return (
         <div>
             <NavBar></NavBar>
-            
-            <div className=" max-w-[450px] md:max-w-[750px] lg:max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-                
-                {
-                    loadedProducts.length > 0 ?
-                    loadedProducts.map(loadedProduct =>
-                        <ShowProducts key={loadedProduct._id}
-                            loadedProduct={loadedProduct}>
-                        </ShowProducts>) : 
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'There is no product here',
-                            footer: '<a href="/">Go to Home</a>'
-                          })
-                }
+
+            <div>
+               
+                <div className=" max-w-[450px] md:max-w-[750px] lg:max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+
+                    {
+                        loadedProducts.length > 0 ?
+                            loadedProducts.map(loadedProduct =>
+                                <ShowProducts key={loadedProduct._id}
+                                    loadedProduct={loadedProduct}>
+                                </ShowProducts>) :
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'There is no product here',
+                                footer: '<a href="/">Go to Home</a>'
+                            })
+                    }
+                </div>
             </div>
         </div>
     );
