@@ -12,8 +12,8 @@ const ShowProducts = ({ loadedProduct }) => {
         navigate( `/productDetails/${id}`)
     }
 
-    const handleUpdate =()=>{
-        navigate('')
+    const handleUpdate =(id)=>{
+        navigate(`/updateProduct/${id}`)
     }
 
     return (   
@@ -31,7 +31,7 @@ const ShowProducts = ({ loadedProduct }) => {
                     </div>
                     <div className=" flex justify-between mt-3  ">
                         <button onClick={()=>handleDetails(loadedProduct._id)} className=" bg-[#473fed] text-white w-1/3 my-3 py-2 px-3 rounded-xl ">Details</button>
-                        <button onClick={handleUpdate} className=" bg-[#473fed] text-white w-1/3 my-3 py-2 px-3 rounded-xl ">Update</button>
+                        <button onClick={()=>handleUpdate(loadedProduct._id)} className=" bg-[#473fed] text-white w-1/3 my-3 py-2 px-3 rounded-xl ">Update</button>
                     </div>
                 </div>
             </div>

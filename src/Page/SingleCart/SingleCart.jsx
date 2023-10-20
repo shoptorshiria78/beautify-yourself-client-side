@@ -1,59 +1,64 @@
 import PropTypes from 'prop-types';
-import {
-    Card,
-    CardHeader,
-    CardBody,
-    Typography,
-    Button,
-} from "@material-tailwind/react";
+import { AiFillDelete } from 'react-icons/ai';
+import Swal from 'sweetalert2';
 
-const SingleCart = ({ cartData }) => {
+
+const SingleCart = ({ cartData,cartDataOrdered,setCartDataOrdered }) => {
+
+    console.log(cartData)
+
+    const handleDelete =(_id)=>{
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`https://localhost:5000/myCart/${_id}`,{
+                    method: 'DELETE'
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                    console.log(data)
+                    if(data.deletedCount>0){
+                        Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                              )
+                              const remainingProduct = cartDataOrdered.filter( cartData=> cartData._id !== _id);
+                              setCartDataOrdered(remainingProduct);
+                    }
+                })
+            //   
+            }
+          })
+
+    }
+
     return (
-        <Card className="w-full bg-green-300 my-4 flex-row">
-            <CardHeader
-                shadow={false}
-                floated={false}
-                className="m-0 w-[200px] md:w-[200px] lg:w-[300] shrink-0 rounded-r-none"
-            >
-                <img
-                    src={cartData.image}
-                    alt="card-image"
-                    className="h-[80vh] w-full object-cover"
-                />
-            </CardHeader>
-            <CardBody className='ml-4 lg:mt-40 flex-col items-center justify-center'>
-               
-                <Typography variant="h4" color="blue-gray" className="mb-2 font-bold">
-                   {cartData.name}
-                </Typography>
-                <Typography color="gray" className="mb-8 font-medium">
-                   {cartData.description.slice(0,250)}..
-                </Typography>
-                <a href="#" className="inline-block">
-                    <Button variant="text" className="flex items-center gap-2">
-                        See Details
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                            className="h-4 w-4"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                            />
-                        </svg>
-                    </Button>
-                </a>
-            </CardBody>
-        </Card>
+        <div className='grid grid-cols-3'>
+            <img className='h-[300px] w-full' src={cartData.image} alt="" />
+            <div className='col-span-2 flex h-full items-center ml-4'>
+                <div >
+                    <h1>{cartData.name}</h1>
+                    <p>{cartData.description}</p>
+                    <p>{cartData.price}</p>
+                    <button onClick={()=>handleDelete(cartData._id)}><AiFillDelete className='text-4xl'></AiFillDelete></button>
+                </div>
+            </div>
+        </div>
     );
 };
 SingleCart.propTypes = {
-    cartData: PropTypes.object
+    cartData: PropTypes.object,
+    cartDataOrdered:PropTypes.array,
+    setCartDataOrdered:PropTypes.func
 }
 
 

@@ -1,18 +1,20 @@
-// import { useContext } from "react";
-// import { Link, NavLink } from "react-router-dom";
-// import { AuthContext } from "../../Provider/AuthProvider";
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+
 
 
 const NavBar = () => {
-    // const {  logOut } = useContext(AuthContext);
-    // const handleLogOut = () => {
-    //     logOut()
-    //         .then()
-    //         .catch(error => {
-    //             console.error(error);
-    //         })
-    // }
+    
+    const {  logOut, user } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch(error => {
+                console.error(error);
+            })
+    }
 
     const Nav = <div className=" space-x-3 text-base">
         <NavLink to='/' style={({ isActive }) => {
@@ -22,7 +24,7 @@ const NavBar = () => {
             };
         }}>Home</NavLink>
        {
-        // user && 
+         user && 
         <>
          <NavLink to='/myCart' style={({ isActive }) => {
             return {
@@ -67,7 +69,7 @@ const NavBar = () => {
 
                 </ul>
             </div >
-            {/* <div className="navbar-end">
+            <div className="navbar-end">
                 {
                     user ?
                         <div className="flex justify-between items-center">
@@ -83,7 +85,7 @@ const NavBar = () => {
                                 className=" bg-[#E55473] text-white px-5 py-2 rounded">Log In </Link>
                         </div>
                 }
-            </div> */}
+            </div>
         </div>
     );
 };

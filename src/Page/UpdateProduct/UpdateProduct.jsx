@@ -1,9 +1,12 @@
+import { useLoaderData } from "react-router-dom";
 import NavBar from "../../SharedComponent/NavBar/NavBar";
+import Swal from "sweetalert2";
 
 
 const UpdateProduct = () => {
 
-
+const loadedProduct = useLoaderData();
+const {_id,brand, name, price, type, image, description, rating} = loadedProduct
 
     const handleUpdate =(event)=>{
            
@@ -21,8 +24,8 @@ const UpdateProduct = () => {
         console.log(brand, name, price, type, image, description, rating)
         const product ={brand, name, price, type, image, description, rating }
 
-        fetch("http://localhost:5000/product", {
-            method:'POST',
+        fetch(`http://localhost:5000/updateProduct/${_id}`, {
+            method:'PUT',
             headers:{
                 'content-type':'application/json'
             },
@@ -31,8 +34,19 @@ const UpdateProduct = () => {
         .then(res=>res.json())
         .then(data=>{
             console.log(data);
+           
+            if(data.modifiedCount > 0){
+                
+                Swal.fire({
+                    title: 'Product Updated',
+                    text: 'Do you want to continue',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                 })
+                 
+            }
         })
-    
+        
     }
 
     return (
@@ -44,32 +58,32 @@ const UpdateProduct = () => {
                     <label className="label">
                         <span className="label-text text-white">Brand Name</span>
                     </label>
-                    <input  placeholder="Brand Name" className="p-2 w-full  " type="text" name='brand' />
+                    <input defaultValue={brand} placeholder="Brand Name" className="p-2 w-full  " type="text" name='brand' />
                     <label className="label">
                         <span className="label-text text-white">Name</span>
                     </label>
-                    <input placeholder="Name" className="p-2 w-full " type="text" name='name' />
+                    <input defaultValue={name} placeholder="Name" className="p-2 w-full " type="text" name='name' />
                     <label className="label">
                         <span className="label-text text-white">Type</span>
                     </label>
-                    <input placeholder="Type" className="p-2  w-full " type="text" name='type' />
+                    <input defaultValue={type} placeholder="Type" className="p-2  w-full " type="text" name='type' />
                     <label className="label">
                         <span className="label-text text-white">Price</span>
                     </label>
-                    <input placeholder="Price" className="p-2 w-full " type="text" name='price' />
+                    <input defaultValue={price} placeholder="Price" className="p-2 w-full " type="text" name='price' />
                     <label className="label">
                         <span className="label-text text-white">Short Description</span>
                     </label>
-                    <input placeholder="Short Description" className="p-2 w-full " type="text" name='description' />
+                    <input defaultValue={description} placeholder="Short Description" className="p-2 w-full " type="text" name='description' />
                     <label className="label">
                         <span className="label-text text-white">Rating</span>
                     </label>
-                    <input placeholder="Rating" className="p-2 w-full " type="text" name='rating' />
+                    <input defaultValue={rating} placeholder="Rating" className="p-2 w-full " type="text" name='rating' />
                     
                     <label className="label">
                         <span className="label-text text-white">Image</span>
                     </label>
-                    <input placeholder="Image" className="p-2  w-full " type="text" name='image' />
+                    <input defaultValue={image} placeholder="Image" className="p-2  w-full " type="text" name='image' />
                     <label className="label">
                         <span className="label-text"></span>
                     </label>   

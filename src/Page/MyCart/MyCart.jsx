@@ -1,38 +1,24 @@
 import { useLoaderData } from "react-router-dom";
 import NavBar from "../../SharedComponent/NavBar/NavBar";
 import SingleCart from "../SingleCart/SingleCart";
-import { useEffect, useState } from "react";
-import swal from "sweetalert";
+import {  useState } from "react";
+import Swal from "sweetalert2";
+
 
 
 const MyCart = () => {
 
     const myCartDatas = useLoaderData();
-
-    const [orderedCard, setOrderedCard] = useState([]);
-    const [seeAllButton, setSeeAllButton] = useState(false);
-
-    useEffect(() => {
-       
-        if (myCartDatas) {
-            const length = myCartDatas.length;
-            length < 1 ? setOrderedCard(myCartDatas) : setOrderedCard(myCartDatas.slice(0, 1));
-
-            length > 1 ? setSeeAllButton(true) : setSeeAllButton(false);
-        }
-
-        else {
-
-            swal("Oops", "You Have Not Ordered yet", "error");
-        }
-    }, [])
-
-    const handleSeeAllButton = () => {
-        
-        setOrderedCard(myCartDatas);
-        setSeeAllButton(false);
+    const [cartDataOrdered, setCartDataOrdered] = useState(myCartDatas)
+   
+    if(!cartDataOrdered){
+        return Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'You have not added any product yet',
+            footer: '<a href="/">Why do I have this issue?</a>'
+          })
     }
-
 
     return (
         <div>
@@ -40,18 +26,19 @@ const MyCart = () => {
             <div className="max-w-[1100px] mx-3 md:mx-4 lg:mx-auto mt-12 gap-2 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
                 <div className="col-span-1 md:col-span-2 lg:col-span-3 " >
                     <div >
-                        <div className=" w-[400px] md:w-[470px] lg:w-[800px]">
+                        <div className=" space-y-5 w-[400px] md:w-[470px] lg:w-[800px]">
                             {
-                                orderedCard.map((cartData) => <SingleCart key={cartData._id} cartData={cartData}></SingleCart>)
+                                cartDataOrdered.map((cartData) =>
+                                  <SingleCart
+                                    key={cartData._id}
+                                    cartData={cartData}
+                                    cartDataOrdered={cartDataOrdered}
+                                    setCartDataOrdered={setCartDataOrdered}
+                                     ></SingleCart>
+                                    
+                                )
+                                   
                             }
-                        </div>
-                        <div className="flex justify-center items-center my-10">
-
-                            {
-                                seeAllButton && <button onClick={handleSeeAllButton} className={"text-lg bg-[#009444] text-white text-center h-10 rounded px-6 "}>See All</button>
-                            }
-
-
                         </div>
 
                     </div>

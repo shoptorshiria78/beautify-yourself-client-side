@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import NavBar from "../../SharedComponent/NavBar/NavBar";
 
 
@@ -29,6 +30,15 @@ const AddProduct = () => {
         .then(res=>res.json())
         .then(data=>{
             console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Product Updated',
+                    text: 'Do you want to continue',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                  })
+                 form.reset();
+            }
         })
     
     }
