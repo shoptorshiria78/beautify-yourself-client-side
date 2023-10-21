@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import { BsStar } from "react-icons/bs";
-
+// import { BsStar } from "react-icons/bs";
+import { Rating } from "@material-tailwind/react";
 
 
 const ShowProducts = ({ loadedProduct }) => {
+
+   
 
     const navigate = useNavigate()
 
@@ -28,7 +30,7 @@ const ShowProducts = ({ loadedProduct }) => {
                     <h2 className='text-base font-semibold text-left text-fuchsia-600'>{loadedProduct.type.toUpperCase()}</h2>
 
                     <p className='text-fuchsia-600 text-sm'>Price : {loadedProduct.price} $</p>
-                    <p className='flex items-center text-fuchsia-600 text-sm'>Rating: {loadedProduct.rating}<BsStar className='ml-2'></BsStar></p>
+                     <Rating unratedColor="white" ratedColor="red" className='w-4 h-4 transform -rotate-90' value={parseInt(loadedProduct.rating)} />
 
                     <div className=" flex justify-between mt-3  ">
                         <button onClick={() => handleDetails(loadedProduct._id)} className=" bg-fuchsia-600 text-white w-1/3 my-3 py-1 px-1 text-xs rounded ">Details</button>
