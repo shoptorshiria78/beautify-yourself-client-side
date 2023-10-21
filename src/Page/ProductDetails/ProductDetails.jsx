@@ -7,25 +7,29 @@ import { BsTelephoneFill } from 'react-icons/bs'
 import { AiOutlineTwitter } from 'react-icons/ai'
 import { AiFillLinkedin } from 'react-icons/ai'
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
 
 const ProductDetails = () => {
 
-    
+    const { user } = useContext(AuthContext);
+    const uEmail = user["email"]
+    // console.log(uEmail);
 
     const productDetails = useLoaderData();
+    // console.log(productDetails)
 
-  
+    const userProduct = {productDetails, uEmail}
 
-  
     const handleMyCart = () => {
-        fetch("http://localhost:5000/myCart", {
+        fetch("https://beautify-yourself-server.vercel.app/myCart", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(productDetails)
+            body: JSON.stringify(userProduct)
         })
             .then(res => res.json())
             .then(data => {

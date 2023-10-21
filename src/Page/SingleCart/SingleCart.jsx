@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 const SingleCart = ({ cartData,cartDataOrdered,setCartDataOrdered }) => {
 
-    console.log(cartData)
+    // console.log(cartData)
 
     const handleDelete =(id)=>{
         Swal.fire({
@@ -19,7 +19,7 @@ const SingleCart = ({ cartData,cartDataOrdered,setCartDataOrdered }) => {
           }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/myCart/${id}`,{
+                fetch(`https://beautify-yourself-server.vercel.app/mycart/${id}`,{
                     method: 'DELETE'
                 })
                 .then(res=>res.json())
@@ -43,14 +43,14 @@ const SingleCart = ({ cartData,cartDataOrdered,setCartDataOrdered }) => {
     console.log("singlecart",cartData)
     return (
         <div className='grid grid-cols-1 lg:grid-cols-2 bg-red-100'>
-            <img className='h-[300px] lg:col-span-1 w-full p-5 bg-white' src={cartData.image} alt="" />
+            <img className='h-[300px] lg:col-span-1 w-full p-5 bg-white' src={cartData.productDetails.image} alt="" />
             <div className='lg:col-span-1 flex h-full items-center ml-4'>
                 <div >
-                    <h1 className='text-xl font-bold text-fuchsia-500'>{cartData.name}</h1>
+                    <h1 className='text-xl font-bold text-fuchsia-500'>{cartData.productDetails.name}</h1>
                     <p className='text-sm 
-                     text-fuchsia-500 my-2'>{cartData.description}</p>
+                     text-fuchsia-500 my-2'>{cartData.productDetails.description}</p>
                     <p className='text-base font-medium 
-                     text-fuchsia-500'>Price :{cartData.price} $</p>
+                     text-fuchsia-500'>Price :{cartData.productDetails.price} $</p>
                     <button className=' my-2 text-2xl font-bold text-fuchsia-500' onClick={()=>handleDelete(cartData._id)}><AiFillDelete ></AiFillDelete></button>
                 </div>
             </div>

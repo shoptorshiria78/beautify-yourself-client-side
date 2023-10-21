@@ -26,9 +26,9 @@ const Router = createBrowserRouter([
             element:<PrivateRoute><AddProduct></AddProduct></PrivateRoute>
         },
         {
-            path:'/myCart',
+            path:'/myCart/:email',
             element:<PrivateRoute><MyCart></MyCart></PrivateRoute>,
-            loader:()=>fetch("http://localhost:5000/myCart")
+            loader:({params})=>fetch(`https://beautify-yourself-server.vercel.app/myCart/${params.email}`)
         },
         {
             path:'/login',
@@ -41,17 +41,17 @@ const Router = createBrowserRouter([
         {
           path:'/product/:brand',
           element:<Products></Products>,
-          loader:({params})=>fetch(`http://localhost:5000/product/${params.brand}`)
+          loader:({params})=>fetch(`https://beautify-yourself-server.vercel.app/product/${params.brand}`)
       },
       {
         path:'/productDetails/:id',
         element:<PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
-        loader:({params})=>fetch(`http://localhost:5000/productDetails/${params.id}`)
+        loader:({params})=>fetch(`https://beautify-yourself-server.vercel.app/productDetails/${params.id}`)
        },
        {
         path:'/updateProduct/:id',
         element:<PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
-        loader:({params})=>fetch(`http://localhost:5000/updateProduct/${params.id}`)
+        loader:({params})=>fetch(`https://beautify-yourself-server.vercel.app/updateProduct/${params.id}`)
        },
 
       ]

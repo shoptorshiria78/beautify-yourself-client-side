@@ -26,7 +26,7 @@ const NavBar = ({toggleDarkMode}) => {
         {
             user &&
             <>
-                <NavLink to='/myCart' style={({ isActive }) => {
+                <NavLink to={`/myCart/${user.email}`} style={({ isActive }) => {
                     return {
                         fontWeight: isActive ? "bold" : "",
                         color: isActive ? "fuchsia" : " red ",

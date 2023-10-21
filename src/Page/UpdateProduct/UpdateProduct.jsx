@@ -24,7 +24,7 @@ const {_id,brand, name, price, type, image, description, rating} = loadedProduct
         console.log(brand, name, price, type, image, description, rating)
         const product ={brand, name, price, type, image, description, rating }
 
-        fetch(`http://localhost:5000/updateProduct/${_id}`, {
+        fetch(`https://beautify-yourself-server.vercel.app/updateProduct/${_id}`, {
             method:'PUT',
             headers:{
                 'content-type':'application/json'
