@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import NavBar from "../../SharedComponent/NavBar/NavBar";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 
 const UpdateProduct = () => {
@@ -49,9 +50,15 @@ const {_id,brand, name, price, type, image, description, rating} = loadedProduct
         
     }
 
+    const [darkMode, setDarkMode] = useState(false);
+
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+    };
+
     return (
-        <div className="bg-gradient-to-r from-fuchsia-400 to-fuchsia-100 py-5">
-            <NavBar></NavBar>
+        <div className={`${darkMode? 'bg-black':'bg-gradient-to-r from-fuchsia-400 to-fuchsia-100'} py-5`} >
+            <NavBar toggleDarkMode={toggleDarkMode}></NavBar>
             <div className=" py-20 " >
                 <h1 className="text-3xl text-center text-white my-3">Update Product</h1>
                 <form onSubmit={handleUpdate} className="space-y-2 w-2/6 mt-3 mx-auto mb-4">

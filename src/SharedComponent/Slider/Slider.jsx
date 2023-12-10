@@ -6,7 +6,7 @@ import {  EffectCoverflow, Pagination } from 'swiper/modules';
 import { useState } from 'react';
 import NavBar from '../NavBar/NavBar';
 
-const Slider = () => {
+const Slider = ({toggleDarkMode}) => {
 
     const bannerData = [
         {    
@@ -79,7 +79,7 @@ const Slider = () => {
             </div>
         </div>
         <div className="absolute top-3  w-full">
-           <NavBar></NavBar>
+           <NavBar toggleDarkMode={toggleDarkMode}></NavBar>
            </div>
         </div>
     );

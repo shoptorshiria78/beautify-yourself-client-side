@@ -7,6 +7,11 @@ import Swal from "sweetalert2";
 
 
 const MyCart = () => {
+    const [darkMode, setDarkMode] = useState(false);
+
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+    };
 
     const myCartDatas = useLoaderData();
     const [cartDataOrdered, setCartDataOrdered] = useState(myCartDatas)
@@ -21,8 +26,8 @@ const MyCart = () => {
     }
 
     return (
-        <div className="bg-purple-100 py-10" >
-            <NavBar></NavBar>
+        <div className={`${darkMode? 'bg-black':'bg-purple-100 '} py-10`} >
+            <NavBar toggleDarkMode={toggleDarkMode}></NavBar>
             <div className="max-w-[1100px] mx-3 md:mx-4 lg:mx-auto mt-12 gap-2 ">              
                     <div >
                         <div className=" w-[400px] md:w-[470px] lg:w-[1000px] mx-auto grid grid-cols-2 gap-3">

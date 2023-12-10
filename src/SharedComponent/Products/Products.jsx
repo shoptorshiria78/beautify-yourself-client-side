@@ -3,16 +3,22 @@ import { useLoaderData } from "react-router-dom";
 import ShowProducts from "../ShowProducts/ShowProducts";
 import Swal from "sweetalert2";
 import Slider from "../Slider/Slider";
+import { useState } from "react";
 
 
 const Products = () => {
 
     const loadedProducts = useLoaderData();
+    const [darkMode, setDarkMode] = useState(false);
+
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+    };
 
     return (
-        <div>
+        <div className={`${darkMode? 'bg-black':''}`}>
             
-            <Slider></Slider>
+            <Slider toggleDarkMode={toggleDarkMode}></Slider>
 
             <div className=" max-w-[450px] md:max-w-[750px] lg:max-w-[1100px] mx-auto bg-white p-8 ">
             

@@ -17,7 +17,6 @@ const Home = () => {
 
     return (
         <div className={`${darkMode? 'bg-black':''}`}>
-           
             <Banner toggleDarkMode={toggleDarkMode}></Banner>
             <Brand></Brand>
             <Team></Team>

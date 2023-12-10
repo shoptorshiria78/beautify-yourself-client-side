@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import NavBar from "../../SharedComponent/NavBar/NavBar";
+import { useState } from "react";
 
 
 const AddProduct = () => {
@@ -42,10 +43,16 @@ const AddProduct = () => {
         })
     
     }
+    
+    const [darkMode, setDarkMode] = useState(false);
+
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+    };
 
     return (
-        <div className="  bg-gradient-to-r from-fuchsia-400 to-fuchsia-100 py-5">
-            <NavBar ></NavBar>
+        <div className={`${darkMode? 'bg-black':'bg-gradient-to-r from-fuchsia-400 to-fuchsia-100'}  py-5`} >
+            <NavBar toggleDarkMode={toggleDarkMode} ></NavBar>
             <div className=" py-20 " >
                 <h1 className="text-3xl text-center text-white my-3">Add Product</h1>
                 <form onSubmit={handleAdd} className="space-y-2 w-2/6 mt-3 mx-auto mb-4">

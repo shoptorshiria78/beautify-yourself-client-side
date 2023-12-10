@@ -42,10 +42,16 @@ const LogIn = () => {
             navigate(location?.state ? location.state :'/');         
     }
 
+    const [darkMode, setDarkMode] = useState(false);
+
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+    };
+
     return (
-        <div className=" bg-fuchsia-100 py-5">
+        <div className={`${darkMode? 'bg-black':' bg-fuchsia-100'} py-5`}>
             
-            <NavBar></NavBar>
+            <NavBar toggleDarkMode={toggleDarkMode} ></NavBar>
             <div className="hero min-h-screen mt-10 mb-10 ">
                 <div >
                     <div className=" w-[400px] bg-gradient-to-r from-fuchsia-200 to-violet-100">

@@ -7,7 +7,7 @@ import { BsTelephoneFill } from 'react-icons/bs'
 import { AiOutlineTwitter } from 'react-icons/ai'
 import { AiFillLinkedin } from 'react-icons/ai'
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 
@@ -47,10 +47,16 @@ const ProductDetails = () => {
 
 
     }
+    const [darkMode, setDarkMode] = useState(false);
+
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+    };
+
 
     return (
-        <div>
-            <NavBar></NavBar>
+        <div  className={`${darkMode? 'bg-black':''} py-5`}>
+            <NavBar toggleDarkMode={toggleDarkMode}></NavBar>
             <div className=" grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-[450px] md:max-w-[750px] lg:max-w-[1100px] mx-auto  ">
                 <div className="mt-10 lg:mb-10 col-span-1 lg:col-span-2 bg-fuchsia-100 ">
                     <div className="flex p-4">
