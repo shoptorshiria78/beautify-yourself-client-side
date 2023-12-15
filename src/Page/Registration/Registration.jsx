@@ -4,13 +4,15 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import swal from "sweetalert";
 import { updateProfile } from "firebase/auth";
 import NavBar from "../../SharedComponent/NavBar/NavBar";
-import {  BsGoogle } from "react-icons/bs";
+import { BsGoogle } from "react-icons/bs";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../AxiosInterfaces/useAxiosPublic";
 
 
 const Registration = () => {
     const { register, googleLogIn, logOut } = useContext(AuthContext);
+    const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
 
@@ -40,7 +42,7 @@ const Registration = () => {
                     displayName: name,
                     photoURL: image
                 })
-                    .then(() => { window.reload()})
+                    .then(() => { window.reload() })
                     .catch(error => console.error(error))
 
                 logOut()
@@ -51,20 +53,17 @@ const Registration = () => {
 
                 navigate('/login');
 
-                
-                const user = { email, password };
 
-                fetch('https://beautify-yourself-server.vercel.app/user', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(user)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                        if (data.insertedId) {
+                const userInfo = {
+                    email: email,
+                    password: password,
+                    role: "user"
+                };
+
+                axiosPublic.post('/user', userInfo)
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.insertedId) {
                             Swal.fire({
                                 position: 'top-end',
                                 icon: 'success',
@@ -74,7 +73,7 @@ const Registration = () => {
                             })
                         }
                         e.target.reset();
-                        })
+                    })
             })
             .catch(error => {
                 console.error(error)
@@ -86,10 +85,21 @@ const Registration = () => {
     const handleGoogleLogIn = () => {
 
         googleLogIn()
-            .then()
+            .then(result=>{
+                console.log(result.user)
+                const userInfo  = {
+                    email:result?.user?.email,
+                    name:result?.user?.displayName,
+                }
+                axiosPublic.post('/user', userInfo)
+                .then(res=>{
+                    console.log(res.data);
+                    navigate('/')
+                })
+            })
             .catch()
 
-            navigate('/')
+        navigate('/')
     }
 
     const [darkMode, setDarkMode] = useState(false);
@@ -99,8 +109,8 @@ const Registration = () => {
     };
 
     return (
-        <div className={`${darkMode? 'bg-black':'bg-fuchsia-100'} py-5`} >
-            
+        <div className={`${darkMode ? 'bg-black' : 'bg-fuchsia-100'} py-5`} >
+
             <NavBar toggleDarkMode={toggleDarkMode}></NavBar>
             <div className="hero min-h-screen mt-10 mb-10 ">
                 <div >

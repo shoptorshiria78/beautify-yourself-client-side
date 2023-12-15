@@ -10,6 +10,7 @@ import Products from "../SharedComponent/Products/Products";
 import ProductDetails from "../Page/ProductDetails/ProductDetails";
 import UpdateProduct from "../Page/UpdateProduct/UpdateProduct";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import DashboardLayOut from "../DashBoard/DashboardLayOut";
 
 const Router = createBrowserRouter([
     {
@@ -56,6 +57,16 @@ const Router = createBrowserRouter([
 
       ]
     },
+    {
+      path:'dashboard',
+      element:<DashboardLayOut></DashboardLayOut>,
+      children:[
+        {
+          path:'myCart',
+          element:<MyCart></MyCart>
+        }
+      ]
+    }
   ]);
 
 export default Router;

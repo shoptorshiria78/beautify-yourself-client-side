@@ -4,7 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import PropTypes from 'prop-types';
 
 
-const NavBar = ({toggleDarkMode}) => {
+const NavBar = ({ toggleDarkMode }) => {
 
     const { logOut, user } = useContext(AuthContext);
 
@@ -43,7 +43,7 @@ const NavBar = ({toggleDarkMode}) => {
 
     </div>
 
-    
+
 
     return (
         <div className="navbar mt-5 text-r rounded-xl px-12 shadow-xl bg-red-50 max-w-[450px] md:max-w-[750px] lg:max-w-[1100px] mx-auto">
@@ -77,20 +77,38 @@ const NavBar = ({toggleDarkMode}) => {
             <div className="navbar-end">
                 {
                     user ?
-                        <div className="flex justify-between items-center mr-1">
-                            <div className="mr-2">
-                                <img className="w-8 md:w-12 h-8 md:h-12 rounded-full border-2 border-[#E55473]" src={user?.photoURL} alt="" />
-                                <p className="text-fuchsia-600 text-sm md:text-base">{user?.displayName}</p>
+                        <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img alt="Tailwind CSS Navbar component" src={user?.photoURL}  />
+                                </div>
                             </div>
-                            <Link onClick={handleLogOut} to='/'
-                                className=" bg-[#E55473] text-white px-3 lg:px-5 py-2 text-sm md:text-base rounded">Sing Out </Link>
+                            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content space-y-1 rounded-box w-52">
+                                <li>
+                                    <a className="justify-between bg-[#E55473] text-white px-3 lg:px-5 py-2 text-sm md:text-base rounded">
+                                    {user?.displayName}
+                                       
+                                    </a>
+                                </li>
+                                <li><Link  to='/'
+                                className=" bg-[#E55473] text-white px-3 lg:px-5 py-2 text-sm md:text-base rounded">DashBoard</Link></li>
+                                <li><Link onClick={handleLogOut} to='/'
+                                className=" bg-[#E55473] text-white px-3 lg:px-5 py-2 text-sm md:text-base rounded">Log Out </Link></li>
+                            </ul>
                         </div>
+                        // <div className="flex justify-between items-center mr-1">
+                        //     <div className="mr-2">
+                        //         <img className="w-8 md:w-12 h-8 md:h-12 rounded-full border-2 border-[#E55473]" src={user?.photoURL} alt="" />
+                        //         <p className="text-fuchsia-600 text-sm md:text-base">{user?.displayName}</p>
+                        //     </div>
+                            
+                        // </div>
                         : <div className="mr-1" >
                             <Link to='/login'
                                 className=" bg-[#E55473] text-white px-5 py-2 rounded text-sm md:text-base">Log In </Link>
                         </div>
                 }
-                <input onClick={toggleDarkMode} type="checkbox" className="toggle toggle-error w-10 md:w-12"  />
+                <input onClick={toggleDarkMode} type="checkbox" className="toggle toggle-error w-10 md:w-12" />
             </div>
         </div>
     );
