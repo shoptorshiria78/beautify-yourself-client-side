@@ -1,15 +1,10 @@
-import { useLoaderData } from "react-router-dom";
-import NavBar from "../../SharedComponent/NavBar/NavBar";
 import Swal from "sweetalert2";
 import { useState } from "react";
 
 
-const UpdateProduct = () => {
+const AddProduct = () => {
 
-const loadedProduct = useLoaderData();
-const {_id,brand, name, price, type, image, description, rating} = loadedProduct
-
-    const handleUpdate =(event)=>{
+    const handleAdd =(event)=>{
            
         event.preventDefault();
 
@@ -25,8 +20,8 @@ const {_id,brand, name, price, type, image, description, rating} = loadedProduct
         console.log(brand, name, price, type, image, description, rating)
         const product ={brand, name, price, type, image, description, rating }
 
-        fetch(`https://beautify-yourself-server.vercel.app/updateProduct/${_id}`, {
-            method:'PUT',
+        fetch("http://localhost:5000/product", {
+            method:'POST',
             headers:{
                 'content-type':'application/json'
             },
@@ -35,21 +30,19 @@ const {_id,brand, name, price, type, image, description, rating} = loadedProduct
         .then(res=>res.json())
         .then(data=>{
             console.log(data);
-           
-            if(data.modifiedCount > 0){
-                
+            if(data.insertedId){
                 Swal.fire({
                     title: 'Product Updated',
                     text: 'Do you want to continue',
                     icon: 'success',
                     confirmButtonText: 'Cool'
-                 })
-                 
+                  })
+                 form.reset();
             }
         })
-        
+    
     }
-
+    
     const [darkMode, setDarkMode] = useState(false);
 
     const toggleDarkMode = () => {
@@ -57,48 +50,47 @@ const {_id,brand, name, price, type, image, description, rating} = loadedProduct
     };
 
     return (
-        <div className={`${darkMode? 'bg-black':'bg-gradient-to-r from-fuchsia-400 to-fuchsia-100'} py-5`} >
-            <NavBar toggleDarkMode={toggleDarkMode}></NavBar>
+        <div className={`${darkMode? 'bg-black':'bg-gradient-to-r from-fuchsia-400 to-fuchsia-100'}  py-5`} >
             <div className=" py-20 " >
-                <h1 className="text-3xl text-center text-white my-3">Update Product</h1>
-                <form onSubmit={handleUpdate} className="space-y-2 w-2/6 mt-3 mx-auto mb-4">
+                <h1 className="text-3xl text-center text-white my-3">Add Product</h1>
+                <form onSubmit={handleAdd} className="space-y-2 w-2/6 mt-3 mx-auto mb-4">
                     <label className="label">
                         <span className="label-text text-white">Brand Name</span>
                     </label>
-                    <input defaultValue={brand} placeholder="Brand Name" className="p-2 w-full  " type="text" name='brand' />
+                    <input placeholder="Brand Name" className="p-2 w-full  " type="text" name='brand' />
                     <label className="label">
                         <span className="label-text text-white">Name</span>
                     </label>
-                    <input defaultValue={name} placeholder="Name" className="p-2 w-full " type="text" name='name' />
+                    <input placeholder="Name" className="p-2 w-full " type="text" name='name' />
                     <label className="label">
                         <span className="label-text text-white">Type</span>
                     </label>
-                    <input defaultValue={type} placeholder="Type" className="p-2  w-full " type="text" name='type' />
+                    <input placeholder="Type" className="p-2  w-full " type="text" name='type' />
                     <label className="label">
                         <span className="label-text text-white">Price</span>
                     </label>
-                    <input defaultValue={price} placeholder="Price" className="p-2 w-full " type="text" name='price' />
+                    <input placeholder="Price" className="p-2 w-full " type="text" name='price' />
                     <label className="label">
                         <span className="label-text text-white">Short Description</span>
                     </label>
-                    <input defaultValue={description} placeholder="Short Description" className="p-2 w-full " type="text" name='description' />
+                    <input placeholder="Short Description" className="p-2 w-full " type="text" name='description' />
                     <label className="label">
                         <span className="label-text text-white">Rating</span>
                     </label>
-                    <input defaultValue={rating} placeholder="Rating" className="p-2 w-full " type="text" name='rating' />
+                    <input placeholder="Rating" className="p-2 w-full " type="text" name='rating' />
                     
                     <label className="label">
                         <span className="label-text text-white">Image</span>
                     </label>
-                    <input defaultValue={image} placeholder="Image" className="p-2  w-full " type="text" name='image' />
+                    <input placeholder="Image" className="p-2  w-full " type="text" name='image' />
                     <label className="label">
                         <span className="label-text"></span>
                     </label>   
-                    <input className="p-2 w-full bg-fuchsia-600 text-white" type="submit" value="SUBMIT" />
+                    <input className="p-2 w-full bg-fuchsia-600 text-white" type="submit" value="ADD" />
                 </form>
             </div>
         </div>
     );
 };
 
-export default UpdateProduct;
+export default AddProduct;

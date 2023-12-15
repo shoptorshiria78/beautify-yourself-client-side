@@ -19,7 +19,7 @@ const SingleCart = ({ cartData,cartDataOrdered,setCartDataOrdered }) => {
           }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`https://beautify-yourself-server.vercel.app/mycart/${id}`,{
+                fetch(`http://localhost:5000/mycart/${id}`,{
                     method: 'DELETE'
                 })
                 .then(res=>res.json())

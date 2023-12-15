@@ -9,7 +9,7 @@ const Brand = () => {
     const [brands, setBrands] = useState([]);
 
     useEffect(() => {
-        fetch("https://beautify-yourself-server.vercel.app/brand")
+        fetch("http://localhost:5000/brand")
             .then(res => res.json())
             .then(data => {
                 setBrands(data);

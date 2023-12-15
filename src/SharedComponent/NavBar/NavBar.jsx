@@ -90,19 +90,14 @@ const NavBar = ({ toggleDarkMode }) => {
                                        
                                     </a>
                                 </li>
-                                <li><Link  to='/'
+                                <li><Link  to='/dashboard'
                                 className=" bg-[#E55473] text-white px-3 lg:px-5 py-2 text-sm md:text-base rounded">DashBoard</Link></li>
+
                                 <li><Link onClick={handleLogOut} to='/'
                                 className=" bg-[#E55473] text-white px-3 lg:px-5 py-2 text-sm md:text-base rounded">Log Out </Link></li>
                             </ul>
                         </div>
-                        // <div className="flex justify-between items-center mr-1">
-                        //     <div className="mr-2">
-                        //         <img className="w-8 md:w-12 h-8 md:h-12 rounded-full border-2 border-[#E55473]" src={user?.photoURL} alt="" />
-                        //         <p className="text-fuchsia-600 text-sm md:text-base">{user?.displayName}</p>
-                        //     </div>
-                            
-                        // </div>
+                        
                         : <div className="mr-1" >
                             <Link to='/login'
                                 className=" bg-[#E55473] text-white px-5 py-2 rounded text-sm md:text-base">Log In </Link>

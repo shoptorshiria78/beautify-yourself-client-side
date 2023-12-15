@@ -4,11 +4,12 @@ import useAuth from "../Hooks/useAuth";
 
 
 
-const AdminPrivateRoute = (children) => {
+const AdminPrivateRoute = ({children}) => {
    
     const [isAdmin, isAdminLoading] = useAdmin();
-    const [user, loading] = useAuth();
+    const {user, loading} = useAuth();
     const location = useLocation();
+    console.log(user)
     
 
     if(isAdminLoading || loading ){

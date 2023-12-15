@@ -24,7 +24,7 @@ const ProductDetails = () => {
     const userProduct = {productDetails, uEmail}
 
     const handleMyCart = () => {
-        fetch("https://beautify-yourself-server.vercel.app/myCart", {
+        fetch("http://localhost:5000/myCart", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
